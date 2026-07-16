@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://hdg8ybual0ix"]
+
+[ext_resource type="PackedScene" uid="uid://buh4tehhen2nt" path="res://assets/environments/kenney_retro_fantasy/models/floor-flat.glb" id="1_floor_flat"]
+[ext_resource type="PackedScene" uid="uid://mjmw66boyaed" path="res://assets/environments/kenney_retro_fantasy/models/wall-door.glb" id="2_wall_door"]
+[ext_resource type="PackedScene" uid="uid://coh1v35c6yo0i" path="res://assets/environments/kenney_retro_fantasy/models/wall-window.glb" id="3_wall_window"]
+[ext_resource type="PackedScene" uid="uid://ba1ijo004mkqq" path="res://assets/environments/kenney_retro_fantasy/models/stairs-stone.glb" id="4_stairs_stone"]
+[ext_resource type="PackedScene" uid="uid://cqh2oy3rksxmk" path="res://assets/environments/kenney_retro_fantasy/models/detail-crate.glb" id="5_detail_crate"]
+[ext_resource type="PackedScene" uid="uid://bxvg6i0t0h2vp" path="res://assets/environments/kenney_retro_fantasy/models/barrels.glb" id="6_barrels"]
+[ext_resource type="PackedScene" uid="uid://yxwxleduscxt" path="res://assets/environments/kenney_retro_fantasy/models/tree-shrub.glb" id="7_tree_shrub"]
+
+[node name="VisualValidationKenney" type="Node3D" unique_id=82945271]
+
+[node name="FloorA" parent="." unique_id=371830400 instance=ExtResource("1_floor_flat")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.2, 0.08, -1.4)
+
+[node name="FloorB" parent="." unique_id=1853258808 instance=ExtResource("1_floor_flat")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.08, -1.4)
+
+[node name="FloorC" parent="." unique_id=1681323248 instance=ExtResource("1_floor_flat")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.2, 0.08, -1.4)
+
+[node name="WallDoor" parent="." unique_id=1791530529 instance=ExtResource("2_wall_door")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0.1, -3.05)
+
+[node name="WallWindowLeft" parent="." unique_id=35830430 instance=ExtResource("3_wall_window")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -1.2, 0.1, -3.05)
+
+[node name="WallWindowRight" parent="." unique_id=5771327 instance=ExtResource("3_wall_window")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 1.2, 0.1, -3.05)
+
+[node name="StairsStone" parent="." unique_id=1187448248 instance=ExtResource("4_stairs_stone")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.25, 0.08, -1.2)
+
+[node name="Crate" parent="." unique_id=1892432775 instance=ExtResource("5_detail_crate")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.75, 0.08, 0.45)
+
+[node name="Barrels" parent="." unique_id=1770589582 instance=ExtResource("6_barrels")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.35, 0.08, -0.65)
+
+[node name="TreeShrubLeft" parent="." unique_id=1672325443 instance=ExtResource("7_tree_shrub")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -3.2, 0.08, 0.65)
+
+[node name="TreeShrubRight" parent="." unique_id=668535814 instance=ExtResource("7_tree_shrub")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 3.15, 0.08, 0.95)

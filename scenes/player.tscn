@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_controller"]
+[ext_resource type="Texture2D" path="res://assets/characters/player_placeholder.svg" id="2_player_placeholder"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.25
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shadow"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.05, 0.035, 0.04, 0.42)
+
+[sub_resource type="QuadMesh" id="QuadMesh_shadow"]
+material = SubResource("StandardMaterial3D_shadow")
+size = Vector2(0.65, 0.28)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_controller")
+
+[node name="GroundShadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 0, 1, -0.258819, 0, -0.965926, 0, 0.04, 0)
+mesh = SubResource("QuadMesh_shadow")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76, 0)
+billboard = 1
+alpha_cut = 2
+pixel_size = 0.018
+texture = ExtResource("2_player_placeholder")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("CapsuleShape3D_player")
