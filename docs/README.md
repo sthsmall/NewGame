@@ -37,6 +37,8 @@ The demo should answer three questions:
 - [technical_validation_plan.md](technical_validation_plan.md): overall phase
   plan and validation goals
 - [asset_pipeline.md](asset_pipeline.md): community asset and AI art strategy
+- [narrative_art_direction.md](narrative_art_direction.md): story premise,
+  yuri tone, Japanese isekai setting, and art direction
 - [combat_validation.md](combat_validation.md): real-time combat prototype scope
 - [project_structure.md](project_structure.md): proposed folders and system
   responsibilities
