@@ -83,6 +83,7 @@ scripts/     GDScript 原型代码
 
 - `docs/technical_validation_plan.md`
 - `docs/narrative_art_direction.md`
+- `docs/community_resources.md`
 - `docs/project_structure.md`
 - `docs/asset_pipeline.md`
 - `docs/asset_register.md`

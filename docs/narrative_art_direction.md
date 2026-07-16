@@ -1,229 +1,206 @@
-# Narrative And Art Direction
+# 叙事与美术方向
 
-## Purpose
+## 目的
 
-This document records the project's story and art direction so technical
-validation does not drift into a generic fantasy prototype.
+本文档记录项目的故事与美术方向，避免技术验证逐渐变成一个泛用幻想原型。
 
-The project is a Japanese-style yuri RPG set in a Japanese-inspired isekai
-world. The first technical demo should not attempt to deliver the full story,
-but every visual, interaction, and combat test should still point toward that
-identity.
+本项目是一款日式百合向 RPG，故事设定在日式异世界。第一版技术 demo 不需要交付完整故事，但每一次视觉、交互和战斗测试都应指向这个身份。
 
-## Core Identity
+## 核心定位
 
-The project should feel like:
+项目应给人这样的感觉：
 
-- A Japanese yuri story first, not a generic romance side plot
-- A character-driven fantasy RPG with emotional intimacy and tension
-- A Japanese-inspired otherworld rather than a western medieval fantasy world
-- A small, readable HD-2D world where pixel characters stand inside 3D spaces
-- A technical slice that hints at atmosphere, relationship, and mystery without
-  requiring final writing
+- 首先是一部日式百合向作品，而不是泛用 RPG 里的恋爱支线。
+- 是角色驱动的幻想 RPG，重点有情感亲密、犹豫、信任和张力。
+- 是日式意象的异世界，而不是西式中世纪幻想世界。
+- 是一个小而可读的 HD-2D 世界，像素角色站在 3D 空间中。
+- 技术切片可以只暗示氛围、关系和谜团，不需要完整剧本。
 
-Short positioning:
+一句话定位：
 
-> A Japanese yuri HD-2D action RPG about two girls navigating an unfamiliar
-> Japanese-inspired otherworld, where exploration, combat, and quiet emotional
-> moments all reveal their relationship.
+> 一款日式百合向 HD-2D 动作 RPG，讲述两名少女在陌生的日式异世界中探索、战斗，并在安静时刻与危险压力中逐渐显露关系。
 
-## Genre Boundaries
+## 类型边界
 
-The game is:
+项目是：
 
-- Yuri-oriented
-- Japanese RPG-inspired
-- Isekai fantasy
-- HD-2D / pixel character + 3D environment
-- PC-first technical demo
-- Story-light during validation, story-aware in presentation
+- 百合向
+- 日式 RPG 气质
+- 异世界幻想
+- HD-2D / 像素角色 + 3D 环境
+- PC 优先技术 demo
+- 验证阶段故事轻量，但表现上保持叙事意识
 
-The game is not:
+项目不是：
 
-- A western high-fantasy dungeon crawler
-- A parody isekai
-- A harem fantasy
-- A generic action RPG with romance added later
-- A full narrative production during the first validation phase
+- 西式高幻想地牢爬行
+- 异世界恶搞
+- 后宫幻想
+- 事后再加恋爱元素的泛用动作 RPG
+- 第一阶段就完整生产叙事内容的项目
 
-## Story Direction
+## 故事方向
 
-The final story can evolve, but the prototype should assume these broad
-directions:
+最终故事可以继续演化，但原型阶段应假定这些大方向：
 
-- The emotional center is a relationship between two girls.
-- The world should create both wonder and unease.
-- Exploration should support intimate, character-scale discoveries.
-- Combat should feel like pressure placed on the relationship and the player's
-  ability to protect, trust, or cooperate.
-- The setting should allow shrines, old roads, lanterns, stations, rural towns,
-  boundary spaces, and spiritual or mythic elements.
+- 情感中心是一段两名少女之间的关系。
+- 世界同时提供惊奇和不安。
+- 探索应支持角色尺度的亲密发现。
+- 战斗应像是施加在关系上的压力，考验保护、信任或合作。
+- 场景应允许神社、旧路、灯笼、车站、乡镇、边界空间、灵性或神话元素出现。
 
-Good early story test content:
+适合早期测试的故事内容：
 
-- A sign or shrine inscription with strange local rules
-- A quiet landmark that invites character reaction
-- A small abandoned station, path, or village corner
-- A simple object that implies the otherworld has a history
-- A short interaction that suggests concern, trust, distance, or familiarity
+- 写着奇怪地方规则的告示或神社铭文
+- 能引发角色反应的安静地标
+- 小型废弃车站、道路或村落角落
+- 暗示异世界历史的简单物品
+- 暗示关心、信任、距离或熟悉感的短互动
 
-Avoid early story content that requires:
+早期避免依赖：
 
-- Full branching dialogue
-- Long cutscenes
-- Detailed lore exposition
-- Finished romance route structure
-- Large cast introductions
+- 完整分支对话
+- 长过场
+- 大段世界观说明
+- 完整恋爱路线结构
+- 大量角色登场
 
-## Yuri Relationship Tone
+## 百合关系基调
 
-The relationship tone should be sincere and character-driven.
+关系表达应真诚，并以角色为中心。
 
-Useful emotional notes:
+可用的情感关键词：
 
-- Trust earned through action
-- Quiet care rather than constant confession
-- Mutual dependence without making either character passive
-- Small moments of hesitation, concern, jealousy, or comfort
-- Emotional clarity in key moments, ambiguity in early exploration
+- 通过行动建立信任
+- 安静的关心，而不是不断表白
+- 互相依赖，但不让任一方被动化
+- 迟疑、担心、嫉妒、安慰等小瞬间
+- 关键时刻情感清晰，早期探索保持适度暧昧
 
-Avoid reducing the yuri direction to:
+避免把百合方向简化为：
 
-- Fanservice as the main identity
-- A single confession scene disconnected from gameplay
-- One character existing only to support the other
-- Generic "best friends" framing that never meaningfully commits to the yuri
-  premise
+- 以卖点式服务场面作为主要身份
+- 与玩法脱节的单一告白场景
+- 其中一名角色只作为另一人的支撑物存在
+- 永远停留在“好朋友”措辞而不真正承认百合前提
 
-During technical validation, yuri direction can be expressed through:
+技术验证期间，百合方向可以通过这些方式表达：
 
-- Character spacing and camera composition
-- Interaction text
-- Shared environmental reactions
-- Protective combat framing
-- UI language and iconography
-- Color and lighting choices
+- 角色站位和相机构图
+- 交互文本
+- 对同一环境的共同反应
+- 保护性战斗构图
+- UI 语言和图标
+- 色彩与光照选择
 
-## World Direction
+## 世界方向
 
-The setting is a Japanese-inspired isekai world.
+设定是日式异世界。
 
-It can combine:
+它可以组合：
 
-- Rural Japanese paths, station-like spaces, wooden structures, stone steps
-- Shrines, torii-like silhouettes, lanterns, paper charms, boundary markers
-- Fantasy ruins, spirit roads, impossible skies, unfamiliar plants
-- Everyday Japanese details displaced into an otherworld context
-- Quiet liminal spaces: dusk roads, abandoned platforms, misty crossings,
-  half-remembered towns
+- 乡间小路、车站感空间、木结构、石阶
+- 神社、类似鸟居的剪影、灯笼、纸符、边界标记
+- 幻想遗迹、灵道、不可能的天空、陌生植物
+- 被置入异世界语境的日本日常细节
+- 安静的阈限空间：黄昏道路、废弃站台、雾中路口、半记忆化的城镇
 
-The world should not simply be modern Japan copied into fantasy. It should feel
-like another world that borrows Japanese spatial memory, ritual structure, and
-visual language.
+世界不应只是把现代日本复制进幻想。它应该像另一个世界，借用了日本空间记忆、仪式结构和视觉语言。
 
-## Visual Direction
+## 视觉方向
 
-The visual target is HD-2D-adjacent:
+视觉目标接近 HD-2D：
 
-- Pixel or pixel-like characters
-- 3D environment blockouts and props
-- Orthographic angled camera
-- Readable depth and occlusion
-- Controlled fog, glow, and warm/cool contrast
-- Stylized lighting rather than photorealism
+- 像素或类像素角色
+- 3D 环境 blockout 和道具
+- 正交斜角相机
+- 可读的深度与遮挡
+- 受控的雾效、辉光和冷暖对比
+- 风格化光照，而非写实渲染
 
-Useful visual keywords:
+可用视觉关键词：
 
-- twilight
-- shrine road
-- rain-washed stone
-- warm lanterns
-- muted fantasy
-- paper charm
-- rural station
-- quiet magic
-- soft danger
-- intimate scale
+- 黄昏
+- 神社路
+- 雨后石阶
+- 暖灯笼
+- 克制幻想
+- 纸符
+- 乡间车站
+- 安静魔法
+- 柔软危险
+- 亲密尺度
 
-Avoid over-relying on:
+避免过度依赖：
 
-- Generic medieval castle imagery
-- Heavy western fantasy armor motifs
-- Dark blue/purple-only palettes
-- Overly realistic materials
-- Busy effects that hurt readability
-- Large decorative scenery that does not support player navigation
+- 泛用中世纪城堡意象
+- 重型西幻铠甲符号
+- 只有深蓝或紫色的单调调色
+- 过度写实材质
+- 影响可读性的繁忙特效
+- 与玩家导航无关的大型装饰景观
 
-## Color And Mood
+## 色彩与氛围
 
-Early palette direction:
+早期调色方向：
 
-- Warm lantern orange or sunset coral for emotional focus
-- Cool green/blue-gray shadows for otherworld unease
-- Desaturated stone, wood, and earth colors for grounding
-- Small accents of red, pink, or magenta for relationship or ritual motifs
+- 暖橙、灯笼色或夕阳珊瑚色，用于情感焦点
+- 冷绿、蓝灰阴影，用于异世界的不安感
+- 低饱和石头、木头、泥土色，用于接地
+- 少量红、粉、洋红，用于关系或仪式主题
 
-The palette should leave room for the characters to stand out.
+调色应给角色留下足够突出空间。
 
-Avoid making every scene beige, purple, or dark blue. The world should feel
-coherent, but not one-note.
+避免让每个场景都变成米色、紫色或深蓝色。世界需要统一，但不能单调。
 
-## Asset Direction
+## 素材方向
 
-Community 3D assets are allowed during validation, but they should be evaluated
-against the Japanese isekai/yuri direction.
+技术验证期间可以使用社区 3D 素材，但必须按日式异世界和百合方向筛选。
 
-Useful asset categories:
+有用素材类型：
 
-- Stone steps
-- Wooden floors and railings
-- Lantern-like props
-- Low walls
-- Crates and barrels for scale
-- Shrubs and trees
-- Station, shrine, or village-adjacent forms
+- 石阶
+- 木地板和栏杆
+- 类灯笼道具
+- 低矮墙体
+- 用于比例测试的箱子和木桶
+- 灌木和树
+- 车站、神社或村落相关形态
 
-Use with caution:
+谨慎使用：
 
-- Western castle walls
-- Fortified battlements
-- European towers
-- Heavy medieval props
+- 西式城堡墙
+- 城垛
+- 欧洲塔楼
+- 重型中世纪道具
 
-These can still be useful for testing 3D composition, but they should not define
-the final art direction unless deliberately reworked.
+这些素材仍可用于 3D 构图测试，但除非刻意改造，否则不应定义最终美术方向。
 
-## Prototype Application
+## 原型应用
 
-For the current technical validation, this direction should affect:
+当前技术验证中，本方向应影响：
 
-- Which community assets are imported
-- Which props are used in visual tests
-- Camera composition and scale tests
-- Interaction text tone
-- Placeholder UI mood
-- Future character placeholder design
+- 导入哪些社区素材
+- 视觉测试中使用哪些道具
+- 相机构图和比例测试
+- 交互文本语气
+- UI 占位风格
+- 后续角色占位设计
 
-Phase 1 visual tests should answer:
+Phase 1 视觉测试应回答：
 
-1. Can a pixel yuri RPG character read clearly in a 3D otherworld scene?
-2. Can the environment suggest Japanese-inspired fantasy rather than generic
-   western fantasy?
-3. Can lighting, props, and composition support emotional intimacy while staying
-   readable for exploration and combat?
+1. 像素百合 RPG 角色能否在 3D 异世界场景中清晰可读？
+2. 环境能否暗示日式幻想，而不是泛用西幻？
+3. 光照、道具和构图能否支持情感亲密，同时仍满足探索和战斗可读性？
 
-## Open Questions
+## 未定问题
 
-These are intentionally unresolved:
+以下问题暂不急着定稿：
 
-- Is the protagonist originally from modern Japan, another fantasy culture, or a
-  liminal place between both?
-- Is the second central girl native to the otherworld, transported with the
-  protagonist, or encountered after arrival?
-- Is the otherworld spiritual, mythic, post-disaster, dreamlike, or politically
-  structured?
-- Is combat primarily protective, survival-based, ritualized, or adventure-like?
-- How explicit should the relationship be in the first playable slice?
+- 主角来自现代日本、另一个幻想文化，还是二者之间的阈限空间？
+- 第二位核心少女是异世界本地人、与主角一同穿越，还是抵达后相遇？
+- 异世界是灵性、神话、灾后、梦境式，还是有明确政治结构？
+- 战斗主要是保护、生存、仪式化，还是冒险式？
+- 第一版可玩切片中，关系表达应明确到什么程度？
 
-Do not answer all of these before the technical slice works. Use them to guide
-prototype choices without expanding scope too early.
+不要在技术切片成立之前回答所有问题。用这些问题指导原型选择，但不要让范围过早膨胀。

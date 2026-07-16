@@ -1,30 +1,28 @@
-# Real-Time Combat Validation
+# 实时战斗验证
 
-## Goal
+## 目标
 
-Validate whether an HD-2D Godot project can support readable, responsive
-real-time action RPG combat.
+验证 HD-2D Godot 项目能否支持清晰、响应迅速的实时动作 RPG 战斗。
 
-The first combat version should be small and system-focused. It should not aim
-for final balance, final animation, or complex enemy design.
+首个战斗版本应小而系统化。不应追求最终平衡、最终动画或复杂敌人设计。
 
-## Combat Style
+## 战斗风格
 
-Initial target:
+初始目标：
 
-- Small-area real-time combat
-- Player-controlled movement
-- Normal attack
-- Dodge or dash
-- Enemy chase and attack behavior
-- HP-based defeat
-- Clear hit feedback
+- 小范围实时战斗
+- 玩家控制移动
+- 普通攻击
+- 闪避或冲刺
+- 敌人追踪和攻击行为
+- 基于 HP 的击败
+- 清晰的命中反馈
 
-This is closer to a lightweight action RPG than a turn-based JRPG.
+这更接近轻量动作 RPG，而不是回合制 JRPG。
 
-## Core Components
+## 核心组件
 
-Suggested components:
+建议组件：
 
 - `health_component.gd`
 - `hitbox.gd`
@@ -35,99 +33,99 @@ Suggested components:
 - `enemy_ai.gd`
 - `combat_state.gd`
 
-These names are provisional and can change after implementation begins.
+这些名称是暂定的，可以在实现开始后调整。
 
-## Player Combat Requirements
+## 玩家战斗需求
 
-The first player combat prototype should support:
+第一版玩家战斗原型应支持：
 
 - HP
-- Basic attack input
-- Attack cooldown or recovery
-- Hitbox activation only during active attack frames
-- Dodge or dash
-- Temporary invincibility after taking damage
-- Knockback response
-- Movement lock or slowdown during attack
+- 基础攻击输入
+- 攻击冷却或恢复
+- 命中框只在攻击有效帧激活
+- 闪避或冲刺
+- 受伤后的临时无敌
+- 击退反应
+- 攻击期间移动锁定或减速
 
-## Enemy Combat Requirements
+## 敌人战斗需求
 
-The first enemy prototype should support:
+第一版敌人原型应支持：
 
-- Idle state
-- Detection range
-- Chase state
-- Attack range
-- Attack state
-- Cooldown
-- Hurt state
-- Defeated state
-- Optional return-to-origin behavior
+- 待机状态
+- 侦测范围
+- 追踪状态
+- 攻击范围
+- 攻击状态
+- 冷却
+- 受伤状态
+- 击败状态
+- 可选的返回原点行为
 
-## Hit Detection Model
+## 命中检测模型
 
-Recommended approach:
+推荐方案：
 
-- Use Area3D-based hitboxes and hurtboxes.
-- Keep collision layers explicit.
-- Let hitboxes carry damage data.
-- Let hurtboxes route damage to health components.
-- Use short-lived or toggled hitboxes for attacks.
+- 使用基于 Area3D 的命中框和受击框。
+- 明确设置碰撞层。
+- 命中框携带伤害数据。
+- 受击框将伤害路由到生命组件。
+- 攻击使用短生命周期或开关式命中框。
 
-This keeps combat logic reusable between player and enemies.
+这样可以让战斗逻辑在玩家和敌人之间复用。
 
-## HD-2D Combat Concerns
+## HD-2D 战斗关注点
 
-The camera and sprite setup may create combat-specific problems:
+相机和精灵设置可能带来战斗问题：
 
-- Attack range may be hard to judge.
-- Sprite facing may look wrong in 3D space.
-- 3D collision may not match 2D sprite silhouettes.
-- Effects may hide hitboxes.
-- Knockback may look strange on angled terrain.
-- Depth ordering may confuse player/enemy positions.
+- 攻击范围可能难以判断。
+- 精灵朝向在 3D 空间中可能看起来不正确。
+- 3D 碰撞可能与 2D 精灵轮廓不匹配。
+- 特效可能遮挡命中框。
+- 击退在斜角地形上可能显得奇怪。
+- 深度排序可能混淆玩家和敌人的位置。
 
-The combat validation should test these issues early.
+战斗验证应尽早测试这些问题。
 
-## First Enemy
+## 第一版敌人
 
-The first enemy should be intentionally simple.
+第一版敌人应刻意保持简单。
 
-Recommended placeholder:
+推荐占位：
 
-- A shadow-like enemy
-- One melee attack
-- Short chase range
-- Clear wind-up
-- Low HP
+- 阴影类敌人
+- 一种近战攻击
+- 较短追踪范围
+- 清晰前摇
+- 低 HP
 
-The enemy should exist to validate the system, not to be interesting yet.
+这个敌人的目的不是“有趣”，而是验证系统。
 
-## Acceptance Criteria
+## 验收标准
 
-The combat prototype is successful when:
+战斗原型成功条件：
 
-- The player can hit an enemy.
-- The enemy can hit the player.
-- HP changes correctly.
-- Damage cannot trigger repeatedly from one attack unless intended.
-- Knockback feels readable.
-- Dodge or dash can avoid damage.
-- Enemy defeat works.
-- Combat can start and end cleanly.
-- The HD-2D camera does not make combat unreadable.
+- 玩家可以击中敌人。
+- 敌人可以击中玩家。
+- HP 正确变化。
+- 除非有意设计，否则一次攻击不会重复触发伤害。
+- 击退感觉可读。
+- 闪避或冲刺可以避开伤害。
+- 敌人击败流程正常。
+- 战斗可以干净开始和结束。
+- HD-2D 相机不会让战斗不可读。
 
-## Deferred Features
+## 延后功能
 
-Do not implement these until the core loop works:
+核心循环正常工作前，不要实现：
 
-- Combos
-- Multiple weapons
-- Magic system
-- Party members
-- Lock-on camera
-- Status effects
-- Boss mechanics
-- Equipment
-- Skill trees
-- Advanced animation blending
+- 连击
+- 多武器
+- 魔法系统
+- 队友
+- 锁定相机
+- 状态效果
+- Boss 机制
+- 装备
+- 技能树
+- 高级动画混合

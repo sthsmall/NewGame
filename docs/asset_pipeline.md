@@ -1,177 +1,180 @@
-# Asset Pipeline Strategy
+# 资源管线策略
 
-## Goal
+## 目标
 
-The project should avoid spending early development time on final art. The first
-technical demo should use a practical mix of:
+项目应避免在早期开发中过多投入最终美术。首个技术 demo 应使用以下组合：
 
-- Community assets
-- AI-assisted art
-- Simple handmade placeholders
-- Godot-native blockout geometry
+- 社区素材
+- AI 辅助美术
+- 简单手工占位符
+- Godot 原生 blockout 几何体
 
-The purpose is to validate visual direction and gameplay systems before
-committing to final production assets.
+目的是在投入最终生产资源之前，先验证视觉方向和游戏系统。
 
-## Asset Source Priority
+## 资源来源优先级
 
-Preferred order during technical validation:
+技术验证期间的优先顺序：
 
-1. Existing Godot-compatible tools and plugins
-2. CC0 or permissively licensed community assets
-3. Purchased asset packs with clear commercial terms
-4. AI-generated concept or placeholder art
-5. Handmade project-specific assets
+1. 现有 Godot 兼容工具和插件
+2. CC0 或宽松许可的社区素材
+3. 具有明确商业条款的付费素材包
+4. AI 生成的概念或占位美术
+5. 手工制作的项目专用资源
 
-Avoid using any asset that does not have a clear license.
+避免使用任何许可不明确的资源。
 
-## Community Asset Sources
+## 社区素材来源
 
-Useful sources to investigate:
+值得研究的来源：
 
 - Godot Asset Library
-- Godot Asset Store
-- itch.io game asset packs
+- itch.io 游戏素材
 - OpenGameArt
-- Kenney assets
-- GitHub repositories for Godot plugins and examples
+- Kenney
+- KayKit
+- Quaternius
+- Freesound
+- Pixabay Sound Effects
+- Godot 插件和示例项目的 GitHub 仓库
 
-Typical usage:
+更完整的候选清单见：
 
-- Character placeholders
-- Enemy placeholders
-- UI icons
-- Particles and effects
-- Sound effects
-- Low-poly props
-- Tile textures
-- Test environments
+- [community_resources.md](community_resources.md)
 
-## AI-Assisted Art Usage
+典型用途：
 
-AI art is useful for:
+- 角色占位图
+- 敌人占位图
+- UI 图标
+- 粒子和特效
+- 音效
+- 低多边形道具
+- 地面和墙体纹理
+- 测试环境
 
-- Character concept art
-- Scene mood boards
-- Color palette exploration
-- Enemy concepts
-- Prop concepts
-- UI style references
-- Single-frame placeholder sprites
-- Effect texture experiments
+## AI 辅助美术用途
 
-AI art is less reliable for:
+AI 美术适合用于：
 
-- Consistent animation frames
-- Production-ready pixel walk cycles
-- Multi-angle character consistency
-- Clean transparent sprites without post-processing
-- Style-matched asset packs
+- 角色概念图
+- 场景情绪板
+- 配色方案探索
+- 敌人概念图
+- 道具概念图
+- UI 风格参考
+- 单帧占位精灵
+- 特效纹理实验
 
-Recommended approach:
+AI 美术不太适合直接承担：
 
-1. Use AI for concept and mood exploration.
-2. Select one or two promising visual directions.
-3. Convert or redraw key assets into clean pixel sprites.
-4. Use Aseprite, LibreSprite, Krita, or similar tools for cleanup.
-5. Track the source, tool, prompt, date, and usage in the asset register.
+- 一致的动画帧
+- 可生产使用的像素行走循环
+- 多角度角色一致性
+- 无需后处理的干净透明精灵
+- 风格统一的完整素材包
 
-## HD-2D Asset Direction
+推荐方法：
 
-The HD-2D look should be built from a combination of:
+1. 使用 AI 进行概念和情绪探索。
+2. 选择一到两个有希望的视觉方向。
+3. 将关键素材转换或重绘为干净的像素精灵。
+4. 使用 Aseprite、LibreSprite、Krita 或类似工具清理。
+5. 在资源登记表中记录来源、工具、提示词、日期和用途。
 
-- 3D blockout geometry
-- Pixel characters
-- Pixel or low-resolution textures
-- Orthographic angled camera
-- Lighting
-- Fog
-- Glow
-- Depth and atmospheric effects
-- Careful scale and color control
+## HD-2D 资源方向
 
-The project does not need a complete HD-2D asset pack to begin. Early validation
-can use simple 3D meshes and placeholder pixel sprites.
+HD-2D 外观应由以下元素组合构建：
 
-## Import Guidelines
+- 3D blockout 几何体
+- 像素角色
+- 像素或低分辨率纹理
+- 正交斜角相机
+- 光照
+- 雾效
+- 辉光
+- 深度和大气效果
+- 谨慎的比例和色彩控制
 
-Pixel sprites:
+项目不需要完整 HD-2D 素材包即可开始。早期验证可以使用简单 3D 网格和占位像素精灵。
 
-- Disable texture filtering where appropriate.
-- Keep sprite scale consistent.
-- Prefer clear silhouettes.
-- Test Sprite3D and AnimatedSprite3D early.
-- Verify that sprites remain crisp under the camera.
+## 导入指南
 
-3D environment:
+像素精灵：
 
-- Use simple meshes first.
-- Keep collision simple.
-- Avoid overly detailed assets during the first validation.
-- Prefer modular props that can be reused.
-- Use lighting and fog to create mood instead of relying only on geometry.
+- 在适当时禁用纹理过滤。
+- 保持精灵比例一致。
+- 优先使用清晰轮廓。
+- 尽早测试 Sprite3D 和 AnimatedSprite3D。
+- 验证精灵在相机下保持清晰。
 
-Effects:
+3D 环境：
 
-- Start with Godot particles and simple textures.
-- Keep combat effects readable.
-- Avoid effects that hide character positions.
+- 先使用简单网格。
+- 保持碰撞简单。
+- 首次验证期间避免过于复杂的资源。
+- 优先使用可复用模块化道具。
+- 使用光照和雾效营造氛围，不只依赖几何体。
 
-## License Rules
+特效：
 
-Preferred licenses:
+- 从 Godot 粒子和简单纹理开始。
+- 保持战斗特效可读。
+- 避免遮挡角色位置的特效。
 
-- CC0 / Public Domain
-- MIT / BSD / Apache for code plugins
-- Clearly commercial-friendly paid licenses
+## 许可规则
 
-Use with caution:
+首选许可：
 
-- CC-BY, because attribution is required
-- CC-BY-SA, because share-alike requirements may affect distribution
-- GPL or LGPL code plugins, because engine integration and distribution terms
-  need review
+- CC0 / 公共领域
+- MIT / BSD / Apache 代码插件
+- 明确允许商业使用的付费许可
 
-Avoid:
+谨慎使用：
 
-- No license
-- Unclear license
-- Ripped commercial game assets
-- Assets from unknown reposts
+- CC-BY：需要署名
+- CC-BY-SA：相同方式共享要求可能影响分发
+- GPL 或 LGPL 代码插件：需要审查引擎集成和分发条款
 
-## Required Tracking
+避免：
 
-Every non-original asset should be recorded in:
+- 无许可
+- 许可不明确
+- 商业游戏拆包素材
+- 来源不明的转载资源
+
+## 必需追踪
+
+每个非原创资源都必须记录在：
 
 - [asset_register.md](asset_register.md)
 
-Required fields:
+必需字段：
 
-- Asset name
-- Source URL
-- Author
-- License
-- Commercial use status
-- Modification permission
-- Attribution requirement
-- Local path
-- Usage
-- Notes
+- 资源名称
+- 来源 URL
+- 作者
+- 许可
+- 商业使用状态
+- 修改许可
+- 署名要求
+- 本地路径
+- 用途
+- 备注
 
-AI-generated assets should additionally record:
+AI 生成资源还应额外记录：
 
-- Tool/model
-- Prompt or prompt summary
-- Generation date
-- Whether the asset was edited manually
+- 工具/模型
+- 提示词或提示词摘要
+- 生成日期
+- 是否经过手动编辑
 
-## Replacement Strategy
+## 替换策略
 
-Prototype assets should be easy to replace.
+原型资源应易于替换。
 
-Recommended rule:
+推荐规则：
 
-- Game logic should not depend on a specific art file name.
-- Scenes should use clear placeholder names.
-- Asset files should be organized by role, not by temporary source.
-- Final art replacement should not require rewriting gameplay scripts.
+- 游戏逻辑不应依赖特定美术文件名。
+- 场景应使用清晰的占位名称。
+- 资源文件应按角色和用途组织，而不是按临时来源组织。
+- 最终美术替换不应需要重写玩法脚本。

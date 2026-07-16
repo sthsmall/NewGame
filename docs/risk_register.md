@@ -1,155 +1,157 @@
-# Risk Register
+# 风险登记表
 
-## Purpose
+## 目的
 
-Track known risks during technical validation so the project does not drift into
-production before core uncertainties are resolved.
+在技术验证期间跟踪已知风险，避免项目在核心不确定性解决前滑入正式生产。
 
-## Visual Risks
+## 视觉风险
 
-### HD-2D Style May Be Hard To Read
+### HD-2D 风格可能难以阅读
 
-Risk:
+风险：
 
-- Pixel characters may look disconnected from 3D environments.
-- Camera angle may make movement or combat unclear.
+- 像素角色可能看起来与 3D 环境脱节。
+- 相机角度可能让移动或战斗不清晰。
 
-Mitigation:
+缓解措施：
 
-- Validate with placeholder assets early.
-- Tune scale, shadows, lighting, and camera before final art.
-- Test movement and combat in the same camera setup.
+- 尽早使用占位素材验证。
+- 在最终美术之前调整比例、阴影、光照和相机。
+- 在同一套相机设置下同时测试移动和战斗。
 
-### Sprite3D Facing May Look Wrong
+### Sprite3D 朝向可能不自然
 
-Risk:
+风险：
 
-- Billboard sprites may feel flat or rotate strangely.
-- Directional animations may not match movement.
+- Billboard 精灵可能显得扁平或旋转怪异。
+- 方向动画可能与移动方向不匹配。
 
-Mitigation:
+缓解措施：
 
-- Test billboard modes.
-- Test 4-direction or 8-direction sprite sets.
-- Keep player movement and facing rules simple at first.
+- 测试不同 billboard 模式。
+- 测试四方向或八方向精灵。
+- 早期保持玩家移动和朝向规则简单。
 
-### Post-Processing May Hide Gameplay
+### 后处理可能遮挡玩法
 
-Risk:
+风险：
 
-- Fog, bloom, and depth effects may make combat harder to read.
+- 雾效、辉光和深度效果可能降低战斗可读性。
 
-Mitigation:
+缓解措施：
 
-- Treat post-processing as adjustable.
-- Use combat readability as the priority.
-- Keep effects subtle until the core loop works.
+- 将后处理视为可调参数。
+- 以战斗可读性优先。
+- 核心循环稳定前保持效果克制。
 
-## Combat Risks
+## 战斗风险
 
-### Attack Ranges May Be Unclear
+### 攻击范围可能不清晰
 
-Risk:
+风险：
 
-- The angled camera may make it hard to judge hit distance.
+- 斜角相机可能让玩家难以判断命中距离。
 
-Mitigation:
+缓解措施：
 
-- Use visible attack effects.
-- Keep early hitboxes generous.
-- Add debug visualization during development.
+- 使用可见攻击效果。
+- 早期让命中框稍微宽容。
+- 开发期间添加调试可视化。
 
-### Collision And Sprite Scale May Diverge
+### 碰撞与精灵比例可能不一致
 
-Risk:
+风险：
 
-- The player may visually hit or miss in ways that do not match collision.
+- 玩家视觉上命中或未命中，但与碰撞结果不匹配。
 
-Mitigation:
+缓解措施：
 
-- Keep collision simple.
-- Use consistent scale rules.
-- Validate with debug shapes before adding detailed art.
+- 保持碰撞简单。
+- 使用一致比例规则。
+- 加入精细美术前先用调试形状验证。
 
-### Enemy AI Could Expand Too Fast
+### 敌人 AI 可能扩展过快
 
-Risk:
+风险：
 
-- AI complexity may consume time before the core combat loop is proven.
+- AI 复杂度可能在核心战斗循环验证前消耗过多时间。
 
-Mitigation:
+缓解措施：
 
-- Start with one enemy and one attack.
-- Use a small state machine.
-- Defer pathfinding unless the scene requires it.
+- 从一个敌人和一种攻击开始。
+- 使用小型状态机。
+- 除非场景需要，否则推迟寻路。
 
-## Asset Risks
+## 资源风险
 
-### Asset Styles May Clash
+### 素材风格可能冲突
 
-Risk:
+风险：
 
-- Community assets and AI art may not share a consistent style.
+- 社区素材和 AI 美术可能风格不一致。
+- 通用西幻素材可能冲淡“日式百合异世界”的方向。
 
-Mitigation:
+缓解措施：
 
-- Accept mixed placeholders during early validation.
-- Use color grading and lighting to unify the scene.
-- Choose one final art direction only after systems are validated.
+- 早期验证可以接受混合占位素材。
+- 使用色彩、光照和构图统一场景。
+- 只在系统验证后确定最终美术方向。
+- 按 `narrative_art_direction.md` 筛选素材。
 
-### Licensing May Become Unclear
+### 许可可能变得不清楚
 
-Risk:
+风险：
 
-- Assets may become impossible to use commercially if their source is not
-  tracked.
+- 如果没有记录来源，素材后续可能无法用于商业发布。
 
-Mitigation:
+缓解措施：
 
-- Record every external asset in the asset register.
-- Prefer CC0 or clearly commercial-friendly assets.
-- Avoid assets without clear license terms.
+- 在 `asset_register.md` 中记录每个外部素材。
+- 优先选择 CC0 或明确商业友好的素材。
+- 避免许可不明的素材。
 
-### AI Assets May Require Heavy Cleanup
+### AI 素材可能需要大量清理
 
-Risk:
+风险：
 
-- AI-generated sprites may not be production-ready.
+- AI 生成精灵可能无法直接用于生产。
 
-Mitigation:
+缓解措施：
 
-- Use AI primarily for concept art and mood exploration.
-- Manually clean or redraw assets chosen for production.
-- Do not depend on AI for consistent animation until tested.
+- AI 主要用于概念图和情绪探索。
+- 手动清理或重绘被选中的生产素材。
+- 在测试之前不要依赖 AI 生成一致动画。
 
-## Scope Risks
+## 范围风险
 
-### Story May Expand Before Systems Are Proven
+### 故事可能在系统验证前扩展
 
-Risk:
+风险：
 
-- Writing and content production may distract from technical validation.
+- 写作和内容生产可能分散技术验证注意力。
 
-Mitigation:
+缓解措施：
 
-- Keep the first demo story-light.
-- Use temporary interaction text.
-- Prioritize visual, interaction, and combat proof.
+- 第一版 demo 保持故事轻量。
+- 使用临时交互文本。
+- 优先验证视觉、交互和战斗。
+- 用叙事方向约束美术和交互，不急着写完整剧本。
 
-### Too Many RPG Systems Too Early
+### RPG 系统过早膨胀
 
-Risk:
+风险：
 
-- Inventory, quests, save/load, and progression may slow validation.
+- 背包、任务、存档和成长系统可能拖慢验证。
 
-Mitigation:
+缓解措施：
 
-- Defer these systems.
-- Build only what is needed for the technical slice.
+- 推迟这些系统。
+- 只构建技术切片需要的内容。
 
-## Current Highest Risks
+## 当前最高风险
 
-1. Real-time combat readability under the HD-2D camera
-2. Pixel character and 3D scene visual cohesion
-3. Asset style and license management
-4. Scope growth before the core loop is proven
+1. HD-2D 相机下实时战斗可读性
+2. 像素角色与 3D 场景的视觉统一
+3. 日式百合异世界方向被通用西幻素材稀释
+4. 素材风格和授权管理
+5. 核心循环验证前范围膨胀

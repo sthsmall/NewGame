@@ -1,38 +1,38 @@
-# Asset Register
+# 资源登记表
 
-Use this file to track all external and AI-generated assets used by the project.
+使用此文件追踪项目中所有外部素材和 AI 生成素材。
 
-Do not import untracked assets into production scenes.
+不要将未登记素材导入生产场景。
 
-## License Preference
+## 许可偏好
 
-Preferred:
+首选：
 
-- CC0 / Public Domain
-- MIT / BSD / Apache for code
-- Paid assets with clear commercial permission
+- CC0 / 公共领域
+- MIT / BSD / Apache 代码许可
+- 具有明确商业许可的付费素材
 
-Use with caution:
+谨慎使用：
 
 - CC-BY
 - CC-BY-SA
-- GPL / LGPL code plugins
+- GPL / LGPL 代码插件
 
-Avoid:
+避免：
 
-- No license
-- Unclear license
-- Ripped assets
-- Reposted assets with unknown origin
+- 无许可
+- 许可不明确
+- 商业游戏拆包素材
+- 来源不明的转载素材
 
-## Asset Table
+## 资源表
 
-| Asset Name | Type | Source URL | Author | License | Commercial Use | Modification Allowed | Attribution Required | Local Path | Usage | Notes |
+| 资源名称 | 类型 | 来源 URL | 作者 | 许可 | 商业使用 | 允许修改 | 需要署名 | 本地路径 | 用途 | 备注 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Godot default icon | Placeholder texture | Local Godot project template | Godot Engine contributors | See Godot project template/license | Yes | Yes | Check Godot license terms | `res://icon.svg` | Temporary player Sprite3D placeholder | Replace before visual validation polish |
-| Kenney Retro Fantasy Kit 2.0 | 3D environment models | https://kenney.nl/assets/retro-fantasy-kit | Kenney | CC0 1.0 | Yes | Yes | No | `res://assets/environments/kenney_retro_fantasy/` | Phase 1 HD-2D visual validation environment props | Limited import: floor, wall, stairs, crate, barrels, shrub GLB models plus required texture PNGs. Local license copied to asset folder. |
+| Godot 默认图标 | 占位纹理 | 本地 Godot 项目模板 | Godot Engine contributors | 参见 Godot 项目模板/许可 | 是 | 是 | 请查阅 Godot 许可条款 | `res://icon.svg` | 临时玩家 Sprite3D 占位 | 在视觉验证完善前替换 |
+| Kenney Retro Fantasy Kit 2.0 | 3D 环境模型 | https://kenney.nl/assets/retro-fantasy-kit | Kenney | CC0 1.0 | 是 | 是 | 否 | `res://assets/environments/kenney_retro_fantasy/` | Phase 1 HD-2D 视觉验证环境道具 | 有限导入：地面、墙、楼梯、箱子、木桶、灌木 GLB 模型，以及所需 PNG 贴图。本地许可已复制到素材目录。 |
 
-## AI-Generated Asset Table
+## AI 生成资源表
 
-| Asset Name | Type | Tool/Model | Prompt Summary | Date | Edited Manually | Local Path | Usage | Notes |
+| 资源名称 | 类型 | 工具/模型 | 提示词摘要 | 日期 | 手动编辑 | 本地路径 | 用途 | 备注 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

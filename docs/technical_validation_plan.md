@@ -1,213 +1,202 @@
-# Technical Validation Plan
+# 技术验证计划
 
-## Purpose
+## 目的
 
-The purpose of the first demo is to validate technology and production
-direction, not to deliver a complete narrative slice.
+首个 demo 的目的是验证技术和制作方向，而不是交付完整叙事切片。
 
-The demo should prove that the project can support:
+该 demo 应证明项目能够支持：
 
-- HD-2D visual composition
-- Exploration in a 3D space with pixel characters
-- Object and NPC interaction
-- Real-time combat
-- A maintainable Godot architecture
-- A realistic asset pipeline
+- HD-2D 视觉构成
+- 在 3D 空间中使用像素角色进行探索
+- 物体和 NPC 交互
+- 实时战斗
+- 可维护的 Godot 架构
+- 现实可执行的资源管线
 
-## Phase 0: Project Baseline
+## Phase 0：项目基线
 
-Goal: establish a stable Godot project foundation.
+目标：建立稳定的 Godot 项目基础。
 
-Current scope:
+当前范围：
 
-- Godot 4 project using Forward+
-- Main scene
-- Basic 3D environment
-- Orthographic angled camera
-- Player scene
-- Sprite3D player placeholder
-- Basic movement
-- Initial folder structure
+- Godot 4 项目，使用 Forward+
+- 主场景
+- 基础 3D 环境
+- 正交斜角相机
+- 玩家场景
+- Sprite3D 玩家占位图
+- 基础移动
+- 初始目录结构
 
-Implemented baseline additions:
+已实现的基线补充：
 
-- Camera follows the player with an orthographic angled view.
-- Ground and platform have static collision.
-- Player movement uses `CharacterBody3D` with gravity and slide movement.
-- A temporary grid floor helps judge movement distance and direction.
-- Initial `assets`, `data`, `scenes`, and `scripts` subfolders are in place.
+- 相机以正交斜角视角跟随玩家。
+- 地面和平台拥有静态碰撞。
+- 玩家移动使用 `CharacterBody3D`，包含重力和滑动移动。
+- 临时地面网格用于判断移动距离和方向。
+- 初始 `assets`、`data`、`scenes`、`scripts` 子目录已建立。
 
-Acceptance criteria:
+验收标准：
 
-- The project opens cleanly in Godot.
-- The main scene runs with F5.
-- The player can move in the 3D scene.
-- The camera gives an early HD-2D-like angle.
-- The project can be extended without replacing the baseline.
+- 项目可以在 Godot 中正常打开。
+- 主场景按 F5 可运行。
+- 玩家可以在 3D 场景中移动。
+- 相机提供早期 HD-2D 风格的斜角视图。
+- 项目可以在不替换基线的情况下继续扩展。
 
-Status: complete. Verified with Godot 4.7.1 headless project load; in-editor F5
-playtest is still recommended for camera and movement feel.
+状态：完成。已使用 Godot 4.7.1 headless 项目加载验证；仍建议在编辑器内用 F5 检查相机和移动手感。
 
-## Phase 1: HD-2D Visual Validation
+## Phase 1：HD-2D 视觉验证
 
-Goal: prove that the visual target is achievable before investing in large
-systems or final art.
+目标：在投入大型系统或最终美术之前，证明视觉目标可行。
 
-Scope:
+范围：
 
-- Improved 3D blockout for a small test environment
-- Pixel character rendered as Sprite3D or AnimatedSprite3D
-- Orthographic camera tuning
-- Camera follow behavior
-- Directional light setup
-- Fog, glow, and basic post-processing
-- Pixel texture import settings
-- Basic shadow and grounding solution
-- Occlusion tests with 3D objects
-- Scale tests between characters and environment
+- 为小型测试环境改进 3D blockout
+- 使用 Sprite3D 或 AnimatedSprite3D 渲染像素角色
+- 正交相机调优
+- 相机跟随
+- 方向光设置
+- 雾效、辉光和基础后处理
+- 像素纹理导入设置
+- 基础阴影和接地方案
+- 使用 3D 物体进行遮挡测试
+- 角色与环境之间的比例测试
 
-Implemented visual validation additions:
+已实现的视觉验证补充：
 
-- Replaced the default icon with a crisp placeholder pixel character.
-- Added a simple ground shadow under the player for grounding checks.
-- Added foreground posts, a rear wall, and scale markers for occlusion and
-  proportional readability tests.
-- Kept the temporary grid floor active for movement readability, with depth
-  handling tuned so the player draws over it.
-- Configured the placeholder character import for uncompressed, non-mipped
-  pixel-style rendering.
-- Added a limited Kenney Retro Fantasy Kit scene slice to test community 3D
-  assets against the pixel character and orthographic camera.
+- 将 Godot 默认图标替换为清晰的像素风角色占位图。
+- 在玩家脚下添加简单地面阴影，用于接地检查。
+- 添加前景柱、后墙和比例标记物，用于遮挡和比例可读性测试。
+- 临时地面网格继续用于移动可读性，并调整深度处理，使玩家绘制在网格之上。
+- 将角色占位图导入设置为无压缩、无 mipmap，以保留像素风清晰度。
+- 添加一个有限的 Kenney Retro Fantasy Kit 场景切片，用于测试社区 3D 素材与像素角色、正交相机的融合。
 
-Acceptance criteria:
+验收标准：
 
-- A screenshot clearly reads as a pixel character inside a 3D scene.
-- The camera angle feels close to HD-2D rather than plain top-down 2D.
-- The character appears grounded and correctly scaled.
-- The player can move without visual jitter or confusing perspective.
-- Nearby 3D objects can occlude or frame the character without breaking
-  readability.
+- 截图能清晰读作“像素角色站在 3D 场景中”。
+- 相机角度接近 HD-2D，而不是普通俯视 2D。
+- 角色看起来接地且比例正确。
+- 玩家移动时没有明显视觉抖动或视角混乱。
+- 附近 3D 物体可以遮挡或框住角色，而不破坏可读性。
 
-Status: complete for the first visual validation pass. Verified with Godot
-4.7.1 headless project load; in-editor F5 screenshot review should continue to
-tune taste-level camera, scale, and palette choices.
+状态：第一轮视觉验证完成。已使用 Godot 4.7.1 headless 项目加载验证；后续仍应通过编辑器内 F5 截图审查继续调整相机、比例和色彩偏好。
 
-## Phase 2: Exploration And Interaction Validation
+## Phase 2：探索与交互验证
 
-Goal: prove the basic RPG exploration loop.
+目标：验证基础 RPG 探索循环。
 
-Scope:
+范围：
 
-- Reusable interactable component
-- Player interaction detection
-- "Press E" style prompt
-- Simple information/dialogue box
-- Interaction lock/unlock for player movement
-- Test objects such as sign, lamp, NPC, pickup, or trigger area
-- A small set of interaction types sharing one system
+- 可复用的可交互组件
+- 玩家交互检测
+- “按 E”风格提示
+- 简单信息/对话框
+- 交互时锁定/解锁玩家移动
+- 测试物体，例如标志牌、灯、NPC、拾取物或触发区域
+- 一组共享同一系统的小型交互类型
 
-Acceptance criteria:
+验收标准：
 
-- The player can approach an object and receive a prompt.
-- Pressing the interaction key triggers the correct response.
-- Player movement is disabled when interaction UI requires focus.
-- Interaction ends cleanly and control returns to the player.
-- The system can support NPCs, props, pickups, and event triggers.
+- 玩家接近物体时能收到提示。
+- 按下交互键能触发正确响应。
+- 交互 UI 需要焦点时，玩家移动被禁用。
+- 交互能干净结束，控制权返回玩家。
+- 系统能支持 NPC、道具、拾取物和事件触发器。
 
-## Phase 3: Real-Time Combat Core Validation
+## Phase 3：实时战斗核心验证
 
-Goal: prove that the project can support real-time action RPG combat.
+目标：验证项目能够支持实时动作 RPG 战斗。
 
-Initial combat loop:
+初始战斗循环：
 
-1. Enemy detects player.
-2. Enemy enters combat state.
-3. Player attacks or dodges.
-4. Enemy tracks and attacks.
-5. Both sides can take damage.
-6. Enemy can be defeated.
-7. Combat ends and exploration resumes.
+1. 敌人检测到玩家。
+2. 敌人进入战斗状态。
+3. 玩家攻击或闪避。
+4. 敌人追踪并攻击。
+5. 双方都能受到伤害。
+6. 敌人可以被击败。
+7. 战斗结束并回到探索。
 
-Scope:
+范围：
 
-- Player HP
-- Enemy HP
-- Normal attack
-- Hitbox and hurtbox components
-- Damage data
-- Knockback
-- Invincibility frames
-- Dodge or dash
-- Enemy AI with idle, chase, attack, and return states
-- Exploration/combat state switching
-- Basic UI for HP and enemy status
+- 玩家 HP
+- 敌人 HP
+- 普通攻击
+- 命中框和受击框组件
+- 伤害数据
+- 击退
+- 无敌帧
+- 闪避或冲刺
+- 具有待机、追踪、攻击和返回状态的敌人 AI
+- 探索/战斗状态切换
+- HP 和敌人状态基础 UI
 
-Acceptance criteria:
+验收标准：
 
-- The player can damage an enemy.
-- The enemy can damage the player.
-- Attacks have readable startup, active, and recovery moments.
-- Hit reactions are visible.
-- Knockback does not break collision or camera readability.
-- The enemy can be defeated.
-- The game returns to exploration after combat.
+- 玩家可以伤害敌人。
+- 敌人可以伤害玩家。
+- 攻击有可读的前摇、判定和后摇。
+- 受击反应可见。
+- 击退不会破坏碰撞或相机可读性。
+- 敌人可以被击败。
+- 游戏能在战斗结束后回到探索。
 
-## Phase 4: Combat Presentation Validation
+## Phase 4：战斗表现验证
 
-Goal: make combat readable and satisfying inside the HD-2D style.
+目标：让战斗在 HD-2D 风格中可读且有反馈。
 
-Scope:
+范围：
 
-- Attack effect placeholder
-- Hit spark placeholder
-- Hurt flash
-- Ground shadow
-- Directional sprite or facing behavior
-- Small camera shake
-- Enemy warning indicator
-- HP bars
-- Placeholder sound effects
-- Particle tests
+- 攻击特效占位
+- 命中特效占位
+- 受伤闪烁
+- 地面阴影
+- 方向性精灵或朝向行为
+- 小型相机震动
+- 敌人预警指示
+- HP 条
+- 占位音效
+- 粒子测试
 
-Acceptance criteria:
+验收标准：
 
-- Player and enemy actions are readable from the angled camera.
-- Attack ranges are understandable.
-- Hit feedback is clear.
-- Effects do not obscure the characters too much.
-- The camera style supports combat rather than fighting against it.
+- 玩家和敌人的动作在斜角相机下可读。
+- 攻击范围可以理解。
+- 命中反馈清晰。
+- 特效不会过度遮挡角色。
+- 相机风格支持战斗，而不是妨碍战斗。
 
-## Phase 5: Integrated Technical Slice
+## Phase 5：集成技术切片
 
-Goal: combine visual, exploration, and combat systems into one small playable
-demo.
+目标：将视觉、探索和战斗系统整合为一个小型可玩 demo。
 
-Possible flow:
+可能流程：
 
-1. Player spawns in a small station-like test environment.
-2. Player explores and interacts with one or more props.
-3. A trigger or interaction spawns an enemy.
-4. Player enters real-time combat.
-5. Player defeats the enemy.
-6. The scene changes state or displays a simple completion message.
+1. 玩家生成在一个小型车站风格测试环境中。
+2. 玩家探索并与一个或多个道具交互。
+3. 某个触发或交互生成敌人。
+4. 玩家进入实时战斗。
+5. 玩家击败敌人。
+6. 场景改变状态或显示简单完成信息。
 
-Acceptance criteria:
+验收标准：
 
-- Visual style is coherent enough for a prototype.
-- Exploration and combat connect without major bugs.
-- The player understands when they are exploring and when they are fighting.
-- The systems are separated enough to be extended.
-- Performance is stable on the development machine.
+- 视觉风格对原型来说足够连贯。
+- 探索和战斗连接时没有主要 bug。
+- 玩家能理解何时在探索、何时在战斗。
+- 系统分离程度足够，便于扩展。
+- 在开发机器上性能稳定。
 
-## First Validation Priorities
+## 首次验证优先级
 
-Priority order:
+优先级顺序：
 
-1. HD-2D visual readability
-2. Player movement and camera feel
-3. Interaction loop
-4. Real-time combat loop
-5. Combat feedback
-6. Asset pipeline repeatability
+1. HD-2D 视觉可读性
+2. 玩家移动和相机手感
+3. 交互循环
+4. 实时战斗循环
+5. 战斗反馈
+6. 资源管线可重复性
 
-If a later feature threatens an earlier priority, the earlier priority wins.
+如果后续功能威胁到更高优先级，则更高优先级优先。

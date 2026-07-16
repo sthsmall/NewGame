@@ -1,12 +1,10 @@
-# Project Structure
+# 项目结构
 
-## Goal
+## 目标
 
-Keep the first prototype organized without over-engineering it. The structure
-should make it easy to replace assets, add systems, and keep gameplay code away
-from one-off scene details.
+保持第一版原型有组织，同时避免过度工程化。目录结构应便于替换资源、添加系统，并将玩法代码与一次性场景细节分离。
 
-## Proposed Folder Layout
+## 建议目录布局
 
 ```text
 assets/
@@ -41,114 +39,113 @@ scripts/
   camera/
 ```
 
-This layout can be introduced gradually. The current prototype does not need
-every folder immediately.
+该布局可以逐步引入。当前原型不需要立即填满每个目录。
 
-## Scene Responsibilities
+## 场景职责
 
 `main.tscn`
 
-- Temporary entry point
-- Loads the current test environment
-- Contains world environment, camera, light, and prototype objects
+- 临时入口点
+- 加载当前测试环境
+- 包含世界环境、相机、光照和原型对象
 
 `player.tscn`
 
-- Player body
-- Player sprite or animation
-- Collision
-- Movement controller
-- Combat controller later
+- 玩家主体
+- 玩家精灵或动画
+- 碰撞
+- 移动控制器
+- 后续战斗控制器
 
 `enemies/*.tscn`
 
-- Enemy body
-- Enemy sprite
-- Collision
+- 敌人主体
+- 敌人精灵
+- 碰撞
 - AI
-- Health
-- Hitbox/hurtbox setup
+- 生命值
+- 命中框/受击框设置
 
 `ui/*.tscn`
 
-- Interaction prompt
-- Dialogue or message box
+- 交互提示
+- 对话或消息框
 - HP UI
-- Combat indicators
+- 战斗指示器
 
 `levels/*.tscn`
 
-- Environment blockouts and future playable areas
+- 环境 blockout
+- 未来可玩区域
 
-## Script Responsibilities
+## 脚本职责
 
-Player:
+玩家：
 
-- Movement input
-- Interaction input
-- Combat input
-- Player state transitions
+- 移动输入
+- 交互输入
+- 战斗输入
+- 玩家状态切换
 
-Interaction:
+交互：
 
-- Detect interactable objects
-- Show prompt
-- Trigger interaction
-- Lock/unlock movement when needed
+- 检测可交互对象
+- 显示提示
+- 触发交互
+- 需要时锁定/解锁移动
 
-Combat:
+战斗：
 
-- Health
-- Hitbox/hurtbox
-- Damage routing
-- Attack timing
-- Knockback
-- Enemy AI
-- Combat state
+- 生命值
+- 命中框/受击框
+- 伤害路由
+- 攻击时机
+- 击退
+- 敌人 AI
+- 战斗状态
 
-UI:
+UI：
 
-- Prompt display
-- HP display
-- Dialogue or message display
-- Combat feedback
+- 提示显示
+- HP 显示
+- 对话或消息显示
+- 战斗反馈
 
-State:
+状态：
 
-- Global prototype flags
-- Relationship or story variables later
-- Demo completion state
+- 全局原型标志
+- 后续关系或故事变量
+- Demo 完成状态
 
-Camera:
+相机：
 
-- Orthographic follow
-- Combat camera tuning
-- Camera shake
-- Optional bounds
+- 正交跟随
+- 战斗相机调优
+- 相机震动
+- 可选边界限制
 
-## Autoload Candidates
+## 自动加载候选
 
-Possible future autoloads:
+未来可能的 autoload：
 
 - `GameState`
 - `InputRouter`
 - `SceneLoader`
 - `AudioManager`
 
-Do not add all of these immediately. Add an autoload only when a system needs
-global access.
+不要立即添加所有 autoload。只有当某个系统确实需要全局访问时才添加。
 
-## Naming Guidelines
+## 命名指南
 
-Suggested naming style:
+建议命名风格：
 
-- Scenes: `snake_case.tscn`
-- Scripts: `snake_case.gd`
-- Nodes: `PascalCase`
-- Export variables: `snake_case`
-- Input actions: `snake_case`
+- 场景：`snake_case.tscn`
+- 脚本：`snake_case.gd`
+- 节点：`PascalCase`
+- 导出变量：`snake_case`
+- 输入动作：`snake_case`
 
-Examples:
+示例：
 
 - `player_controller.gd`
 - `health_component.gd`
@@ -156,15 +153,15 @@ Examples:
 - `attack_light`
 - `interact`
 
-## Architecture Rule
+## 架构规则
 
-Prototype code can be simple, but avoid putting every feature into one script.
+原型代码可以简单，但避免把所有功能塞进一个脚本。
 
-Good early separation:
+良好的早期分离：
 
-- Movement script controls movement.
-- Interaction script controls interaction.
-- Combat scripts control combat.
-- UI scripts control UI.
+- 移动脚本控制移动。
+- 交互脚本控制交互。
+- 战斗脚本控制战斗。
+- UI 脚本控制 UI。
 
-This keeps the prototype flexible without slowing development too much.
+这样能保持原型灵活，又不会过多拖慢开发速度。
