@@ -1,84 +1,85 @@
 # NewGame
 
-NewGame is an early Godot 4 technical prototype for a Japanese-style yuri
-HD-2D action RPG set in a Japanese-inspired isekai world.
+NewGame 是一个 Godot 4 早期技术验证项目，目标是验证一款
+**日式百合向 HD-2D 动作 RPG** 的核心方向。
 
-The current goal is not full content production. The project is validating
-whether pixel characters, 3D environments, exploration, and real-time combat can
-work together under an orthographic HD-2D-style camera.
+故事设定暂定为日式异世界。当前阶段不是完整内容生产，而是验证：
+像素角色、3D 场景、探索、交互和实时战斗，是否能在正交斜角镜头下
+形成清晰、可扩展的原型基础。
 
-## Current Focus
+English README: [README.en.md](README.en.md)
 
-The prototype is currently focused on:
+## 当前重点
 
-- HD-2D visual readability
-- Pixel-style characters inside a 3D scene
-- Orthographic angled camera and camera follow
-- Basic player movement
-- Exploration-scale environment blockouts
-- Community asset workflow and license tracking
+当前原型主要验证：
 
-Completed early validation work:
+- HD-2D 风格的视觉可读性
+- 像素风角色站在 3D 场景中的表现
+- 正交斜角相机和相机跟随
+- 基础玩家移动
+- 探索尺度的环境 blockout
+- 社区素材导入流程和授权记录
 
-- Phase 0 project baseline
-- First Phase 1 visual validation pass
-- Kenney Retro Fantasy Kit test slice for 3D environment composition
-- Narrative and art direction document for the Japanese yuri isekai premise
+已经完成的早期验证：
 
-## Project Direction
+- Phase 0 项目基线
+- Phase 1 第一轮视觉验证
+- Kenney Retro Fantasy Kit 的 3D 场景测试切片
+- 日式百合异世界方向的叙事与美术文档
 
-The game direction is:
+## 项目方向
 
-- Japanese-style yuri RPG
-- Japanese-inspired isekai fantasy setting
-- Pixel or pixel-like characters
-- 3D environment props and blockouts
-- Orthographic HD-2D-adjacent presentation
-- PC-first technical demo
+本项目的方向是：
 
-The first demo should stay story-aware without becoming a full narrative
-production too early.
+- 日式百合向 RPG
+- 日式异世界幻想设定
+- 像素或类像素角色
+- 3D 环境道具和场景 blockout
+- 接近 HD-2D 的正交斜角表现
+- PC 优先的技术 demo
 
-## Requirements
+第一阶段 demo 应该保持“有叙事意识”，但不要过早进入完整剧本和内容生产。
 
-- Godot 4.7.1 or newer Godot 4 build
-- Forward+ renderer
+## 运行环境
 
-The project has been checked with:
+- Godot 4.7.1 或更新的 Godot 4 版本
+- Forward+ 渲染器
+
+当前项目已用以下版本做过加载验证：
 
 ```text
 Godot 4.7.1 stable
 ```
 
-## How To Run
+## 如何运行
 
-1. Open `project.godot` in Godot.
-2. Press `F5`.
-3. Use `WASD` or the arrow keys to move the placeholder player.
+1. 用 Godot 打开 `project.godot`
+2. 按 `F5`
+3. 使用 `WASD` 或方向键移动占位玩家
 
-The main scene is:
+主场景是：
 
 ```text
 res://scenes/main.tscn
 ```
 
-## Repository Layout
+## 目录结构
 
 ```text
-assets/      External and placeholder assets
-data/        Future structured gameplay data
-docs/        Design, validation, asset, and risk documents
-scenes/      Godot scenes
-scripts/     GDScript prototype code
+assets/      外部素材和占位素材
+data/        后续结构化玩法数据
+docs/        设计、验证、素材和风险文档
+scenes/      Godot 场景
+scripts/     GDScript 原型代码
 ```
 
-Important scenes:
+重要场景：
 
 - `scenes/main.tscn`
 - `scenes/player.tscn`
 - `scenes/levels/visual_validation_kenney.tscn`
 
-Important docs:
+重要文档：
 
 - `docs/technical_validation_plan.md`
 - `docs/narrative_art_direction.md`
@@ -88,39 +89,38 @@ Important docs:
 - `docs/combat_validation.md`
 - `docs/risk_register.md`
 
-## Asset Notes
+## 素材说明
 
-The project currently uses:
+当前项目使用：
 
-- Godot default icon as a temporary placeholder asset
-- A handmade SVG pixel-style player placeholder
-- A limited import from Kenney Retro Fantasy Kit 2.0
+- Godot 默认图标作为早期临时占位素材
+- 手写 SVG 像素风玩家占位图
+- 少量 Kenney Retro Fantasy Kit 2.0 环境模型
 
-External assets are tracked in:
+外部素材记录在：
 
 ```text
 docs/asset_register.md
 ```
 
-Kenney Retro Fantasy Kit 2.0 is CC0. The local license copy is stored at:
+Kenney Retro Fantasy Kit 2.0 使用 CC0 授权。本地许可证副本位于：
 
 ```text
 assets/environments/kenney_retro_fantasy/License.txt
 ```
 
-## Development Notes
+## 开发说明
 
-This repository intentionally avoids large RPG systems during the first
-validation phase.
+本仓库在第一轮技术验证阶段刻意避免过早加入大型 RPG 系统。
 
-Deferred until after the core direction is proven:
+以下内容会推迟到核心方向验证之后：
 
-- Full story script
-- Inventory
-- Quest system
-- Save/load
-- Large world map
-- Final character art
-- Final soundtrack
+- 完整剧情脚本
+- 背包系统
+- 任务系统
+- 存档/读档
+- 大地图
+- 最终角色美术
+- 最终音乐
 
-The next major validation target is exploration and interaction.
+下一阶段主要验证目标是探索与交互。
