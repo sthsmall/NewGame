@@ -40,6 +40,8 @@
 
 ## 文档列表
 
+- [asset_candidates.md](asset_candidates.md)：为当前原型筛选的具体资产候选和导入顺序
+- [start_village_design.md](start_village_design.md)：初始村庄场景的定位、资源取舍和后续替换方向
 - [technical_validation_plan.md](technical_validation_plan.md)：整体阶段计划和验证目标
 - [narrative_art_direction.md](narrative_art_direction.md)：叙事前提、百合关系基调、日式异世界设定与美术方向
 - [community_resources.md](community_resources.md)：社区素材、插件、教程和可复用轮子清单

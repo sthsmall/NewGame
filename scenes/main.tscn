@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://c7iu6jeur5dx8"]
 
-[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
-[ext_resource type="Script" path="res://scripts/camera_follow.gd" id="2_camera_follow"]
-[ext_resource type="Script" path="res://scripts/grid_floor.gd" id="3_grid_floor"]
-[ext_resource type="PackedScene" path="res://scenes/levels/visual_validation_kenney.tscn" id="4_kenney_level"]
+[ext_resource type="PackedScene" uid="uid://5bpxd36r8rx2" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://d3p75cai2v1tu" path="res://scripts/camera_follow.gd" id="2_camera_follow"]
+[ext_resource type="Script" uid="uid://dmdbmkbio2kni" path="res://scripts/grid_floor.gd" id="3_grid_floor"]
+[ext_resource type="PackedScene" uid="uid://hdg8ybual0ix" path="res://scenes/levels/visual_validation_kenney.tscn" id="4_kenney_level"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="5_interactable"]
+[ext_resource type="Script" path="res://scripts/interaction_ui.gd" id="6_interaction_ui"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/tiny_pixel_japan_female/npc_kimono_1_sprite_frames.tres" id="7_npc_kimono_frames"]
+[ext_resource type="PackedScene" path="res://scenes/levels/start_village.tscn" id="8_start_village"]
 
 [sub_resource type="Environment" id="Environment_evening"]
 background_mode = 2
@@ -82,6 +86,35 @@ roughness = 0.82
 material = SubResource("StandardMaterial3D_scale_marker")
 size = Vector3(0.5, 0.5, 0.5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_interaction_marker"]
+albedo_color = Color(0.74, 0.35, 0.24, 1)
+roughness = 0.78
+
+[sub_resource type="BoxMesh" id="BoxMesh_interaction_marker"]
+material = SubResource("StandardMaterial3D_interaction_marker")
+size = Vector3(0.34, 0.72, 0.14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_interaction_marker"]
+size = Vector3(0.9, 1.1, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pickup_marker"]
+albedo_color = Color(0.52, 0.82, 0.72, 1)
+emission_enabled = true
+emission = Color(0.22, 0.55, 0.45, 1)
+emission_energy_multiplier = 0.28
+roughness = 0.45
+
+[sub_resource type="BoxMesh" id="BoxMesh_pickup_marker"]
+material = SubResource("StandardMaterial3D_pickup_marker")
+size = Vector3(0.28, 0.12, 0.28)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pickup"]
+radius = 0.55
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_npc_interaction"]
+radius = 0.35
+height = 1.25
+
 [node name="Main" type="Node3D" unique_id=571798487]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=579049396]
@@ -101,54 +134,60 @@ mesh = SubResource("QuadMesh_back_haze")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, -3)
 mesh = SubResource("QuadMesh_back_ground")
 
-[node name="Ground" type="MeshInstance3D" parent="." unique_id=1151891884]
-mesh = SubResource("BoxMesh_ground")
-
-[node name="GroundBody" type="StaticBody3D" parent="Ground" unique_id=590687455]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/GroundBody" unique_id=1889838700]
-shape = SubResource("BoxShape3D_ground")
-
 [node name="GridFloor" type="Node3D" parent="." unique_id=2070905585]
 script = ExtResource("3_grid_floor")
-width = 14.0
-depth = 9.0
+width = 30.0
+depth = 24.0
 
-[node name="Platform" type="MeshInstance3D" parent="." unique_id=847808555]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, -1.2)
-mesh = SubResource("BoxMesh_platform")
+[node name="StartVillage" parent="." instance=ExtResource("8_start_village")]
 
-[node name="PlatformBody" type="StaticBody3D" parent="Platform" unique_id=436926276]
+[node name="InteractionObjects" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/PlatformBody" unique_id=36475305]
-shape = SubResource("BoxShape3D_platform")
+[node name="TestSign" type="Area3D" parent="InteractionObjects"]
+transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 1.4, 0.46, 3.4)
+script = ExtResource("5_interactable")
+prompt_text = "调查临时木牌"
+message = "木牌上写着：水镜村。越过鸟居就是供奉边界神的小社，夜里不要独自靠近溪水。"
 
-[node name="VisualValidation" type="Node3D" parent="." unique_id=1308984572]
+[node name="MarkerMesh" type="MeshInstance3D" parent="InteractionObjects/TestSign"]
+mesh = SubResource("BoxMesh_interaction_marker")
 
-[node name="KenneyRetroFantasy" parent="VisualValidation" unique_id=1963915475 instance=ExtResource("4_kenney_level")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionObjects/TestSign"]
+shape = SubResource("BoxShape3D_interaction_marker")
 
-[node name="BackWall" type="MeshInstance3D" parent="VisualValidation" unique_id=1413662605]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, -3.65)
-mesh = SubResource("BoxMesh_back_wall")
+[node name="CompanionNpc" type="Area3D" parent="InteractionObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.58, 3.2)
+script = ExtResource("5_interactable")
+prompt_text = "与同行少女交谈"
+message = "少女轻声说：这里像村子，又像祭典散场后的梦。我们先问清楚路，再去北边的小社。"
 
-[node name="LeftOcclusionPost" type="MeshInstance3D" parent="VisualValidation" unique_id=1129293565]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0.85, 0.05)
-mesh = SubResource("BoxMesh_front_post")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="InteractionObjects/CompanionNpc"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+pixel_size = 0.035
+billboard = 1
+alpha_cut = 2
+sprite_frames = ExtResource("7_npc_kimono_frames")
+animation = &"idle"
+autoplay = "idle"
 
-[node name="RightOcclusionPost" type="MeshInstance3D" parent="VisualValidation" unique_id=1772621946]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0.85, 0.05)
-mesh = SubResource("BoxMesh_front_post")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionObjects/CompanionNpc"]
+shape = SubResource("CapsuleShape3D_npc_interaction")
 
-[node name="ScaleMarkerSmall" type="MeshInstance3D" parent="VisualValidation" unique_id=362812900]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35, 0.32, 1.2)
-mesh = SubResource("BoxMesh_scale_marker")
+[node name="PickupCharm" type="Area3D" parent="InteractionObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.22, 1.35)
+script = ExtResource("5_interactable")
+prompt_text = "拾取青色护符"
+message = "你捡起一枚泛着青色微光的护符。它像是水镜村用来祈愿归途平安的小物。"
+disable_after_interact = true
 
-[node name="ScaleMarkerTall" type="MeshInstance3D" parent="VisualValidation" unique_id=617060665]
-transform = Transform3D(1, 0, 0, 0, 1.75, 0, 0, 0, 1, 1.35, 0.75, 1.2)
-mesh = SubResource("BoxMesh_scale_marker")
+[node name="MarkerMesh" type="MeshInstance3D" parent="InteractionObjects/PickupCharm"]
+mesh = SubResource("BoxMesh_pickup_marker")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionObjects/PickupCharm"]
+shape = SubResource("SphereShape3D_pickup")
 
 [node name="Player" parent="." unique_id=2015119200 instance=ExtResource("1_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05869185, 5.1)
 
 [node name="Sun" type="DirectionalLight3D" parent="." unique_id=2016766320]
 transform = Transform3D(0.906308, -0.211309, 0.365998, 0, 0.866025, 0.5, -0.422618, -0.453154, 0.784886, 0, 4, 4)
@@ -156,8 +195,13 @@ light_energy = 1.8
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1605213341]
-transform = Transform3D(1, 0, 0, 0, 0.97341716, 0.22903934, 0, -0.22903934, 0.97341716, 0.17946863, 3, 8.8)
+transform = Transform3D(1, 0, 0, 0, 0.97341716, 0.22903934, 0, -0.22903934, 0.97341716, 0.17946863, 4, 12.4)
 projection = 1
 current = true
-size = 5.8
+size = 7.4
 script = ExtResource("2_camera_follow")
+
+[node name="InteractionUI" type="CanvasLayer" parent="."]
+script = ExtResource("6_interaction_ui")
+player_path = NodePath("../Player")
+interactor_path = NodePath("../Player/Interactor")

@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://5bpxd36r8rx2"]
 
-[ext_resource type="Script" path="res://scripts/player_controller.gd" id="1_controller"]
-[ext_resource type="Texture2D" path="res://assets/characters/player_placeholder.svg" id="2_player_placeholder"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
-radius = 0.25
-height = 1.2
+[ext_resource type="Script" uid="uid://k7pk30t6bvre" path="res://scripts/player_controller.gd" id="1_controller"]
+[ext_resource type="SpriteFrames" path="res://assets/characters/tiny_pixel_japan_female/player_hime_sprite_frames.tres" id="2_hime_frames"]
+[ext_resource type="Script" path="res://scripts/player_interactor.gd" id="3_interactor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shadow"]
 transparency = 1
@@ -16,20 +13,37 @@ albedo_color = Color(0.05, 0.035, 0.04, 0.42)
 material = SubResource("StandardMaterial3D_shadow")
 size = Vector2(0.65, 0.28)
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.25
+height = 1.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interactor"]
+radius = 0.82
+
+[node name="Player" type="CharacterBody3D" unique_id=1649632685]
 script = ExtResource("1_controller")
 
-[node name="GroundShadow" type="MeshInstance3D" parent="."]
+[node name="GroundShadow" type="MeshInstance3D" parent="." unique_id=12391472]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 0, 1, -0.258819, 0, -0.965926, 0, 0.04, 0)
 mesh = SubResource("QuadMesh_shadow")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76, 0)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=567503383]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5122409, 0)
+pixel_size = 0.035
 billboard = 1
 alpha_cut = 2
-pixel_size = 0.018
-texture = ExtResource("2_player_placeholder")
+sprite_frames = ExtResource("2_hime_frames")
+animation = &"idle"
+autoplay = "idle"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=64767627]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 shape = SubResource("CapsuleShape3D_player")
+
+[node name="Interactor" type="Area3D" parent="."]
+collision_layer = 0
+script = ExtResource("3_interactor")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("SphereShape3D_interactor")

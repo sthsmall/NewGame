@@ -3,8 +3,8 @@ extends Node3D
 @export var width := 16.0
 @export var depth := 12.0
 @export var spacing := 1.0
-@export var fine_line_color := Color(0.26, 0.32, 0.33, 1.0)
-@export var axis_line_color := Color(0.7, 0.58, 0.36, 1.0)
+@export var fine_line_color := Color(0.18, 0.22, 0.22, 1.0)
+@export var axis_line_color := Color(0.48, 0.38, 0.2, 1.0)
 @export var grid_y := 0.052
 
 var _mesh_instance: MeshInstance3D

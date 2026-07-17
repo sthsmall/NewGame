@@ -1,0 +1,39 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vermilion"]
+albedo_color = Color(0.75, 0.12, 0.08, 1)
+roughness = 0.68
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dark_wood"]
+albedo_color = Color(0.13, 0.075, 0.06, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_post"]
+material = SubResource("StandardMaterial3D_vermilion")
+size = Vector3(0.22, 2.2, 0.22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_beam"]
+material = SubResource("StandardMaterial3D_vermilion")
+size = Vector3(3.15, 0.22, 0.28)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cap"]
+material = SubResource("StandardMaterial3D_dark_wood")
+size = Vector3(3.55, 0.16, 0.36)
+
+[node name="ToriiGate" type="Node3D"]
+
+[node name="LeftPost" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 1.1, 0)
+mesh = SubResource("BoxMesh_post")
+
+[node name="RightPost" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 1.1, 0)
+mesh = SubResource("BoxMesh_post")
+
+[node name="LowerBeam" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74, 0)
+mesh = SubResource("BoxMesh_beam")
+
+[node name="TopBeam" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.24, 0)
+mesh = SubResource("BoxMesh_cap")

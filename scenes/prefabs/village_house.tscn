@@ -1,0 +1,60 @@
+[gd_scene format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.67, 0.58, 0.47, 1)
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roof"]
+albedo_color = Color(0.25, 0.12, 0.14, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.29, 0.18, 0.13, 1)
+roughness = 0.82
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+material = SubResource("StandardMaterial3D_wall")
+size = Vector3(2.4, 1.35, 1.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_roof"]
+material = SubResource("StandardMaterial3D_roof")
+size = Vector3(1.45, 0.18, 2.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trim"]
+material = SubResource("StandardMaterial3D_wood")
+size = Vector3(2.55, 0.14, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_door"]
+material = SubResource("StandardMaterial3D_wood")
+size = Vector3(0.52, 0.82, 0.08)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_body"]
+size = Vector3(2.4, 1.35, 1.7)
+
+[node name="VillageHouse" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)
+mesh = SubResource("BoxMesh_body")
+
+[node name="RoofLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.939373, 0.342898, 0, -0.342898, 0.939373, 0, 0, 0, 1, -0.58, 1.55, 0)
+mesh = SubResource("BoxMesh_roof")
+
+[node name="RoofRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.939373, -0.342898, 0, 0.342898, 0.939373, 0, 0, 0, 1, 0.58, 1.55, 0)
+mesh = SubResource("BoxMesh_roof")
+
+[node name="FrontTrim" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18, 0.91)
+mesh = SubResource("BoxMesh_trim")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.44, 0.45, 0.88)
+mesh = SubResource("BoxMesh_door")
+
+[node name="CollisionBody" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.72, 0)
+shape = SubResource("BoxShape3D_body")

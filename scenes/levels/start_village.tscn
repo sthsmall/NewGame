@@ -1,0 +1,213 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/prefabs/village_house.tscn" id="1_house"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/torii_gate.tscn" id="2_torii"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/paper_lantern.tscn" id="3_lantern"]
+[ext_resource type="PackedScene" path="res://scenes/prefabs/stone_lantern.tscn" id="4_stone_lantern"]
+[ext_resource type="PackedScene" path="res://assets/environments/kenney_retro_fantasy/models/floor-flat.glb" id="5_floor"]
+[ext_resource type="PackedScene" path="res://assets/environments/kenney_retro_fantasy/models/stairs-stone.glb" id="6_stairs"]
+[ext_resource type="PackedScene" path="res://assets/environments/kenney_retro_fantasy/models/tree-shrub.glb" id="7_shrub"]
+[ext_resource type="PackedScene" path="res://assets/environments/kenney_retro_fantasy/models/detail-crate.glb" id="8_crate"]
+[ext_resource type="PackedScene" path="res://assets/environments/kenney_retro_fantasy/models/barrels.glb" id="9_barrels"]
+[ext_resource type="PackedScene" path="res://assets/environments/kenney_retro_fantasy/models/wall-door.glb" id="10_wall_door"]
+[ext_resource type="PackedScene" path="res://assets/environments/kenney_retro_fantasy/models/wall-window.glb" id="11_wall_window"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
+albedo_color = Color(0.19, 0.25, 0.22, 1)
+roughness = 0.88
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_path"]
+albedo_color = Color(0.56, 0.48, 0.36, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_water"]
+transparency = 1
+albedo_color = Color(0.23, 0.46, 0.52, 0.78)
+emission_enabled = true
+emission = Color(0.05, 0.18, 0.2, 1)
+emission_energy_multiplier = 0.18
+roughness = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bridge"]
+albedo_color = Color(0.26, 0.15, 0.1, 1)
+roughness = 0.82
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_field"]
+albedo_color = Color(0.28, 0.36, 0.21, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+material = SubResource("StandardMaterial3D_ground")
+size = Vector3(30, 0.1, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(30, 0.1, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_path_main"]
+material = SubResource("StandardMaterial3D_path")
+size = Vector3(2.2, 0.04, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_path_branch"]
+material = SubResource("StandardMaterial3D_path")
+size = Vector3(7.8, 0.04, 1.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_square"]
+material = SubResource("StandardMaterial3D_path")
+size = Vector3(5.2, 0.045, 4.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_water"]
+material = SubResource("StandardMaterial3D_water")
+size = Vector3(1.65, 0.035, 18.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bridge"]
+material = SubResource("StandardMaterial3D_bridge")
+size = Vector3(2.45, 0.16, 1.65)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bridge_rail"]
+material = SubResource("StandardMaterial3D_bridge")
+size = Vector3(2.45, 0.16, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_field"]
+material = SubResource("StandardMaterial3D_field")
+size = Vector3(4.5, 0.035, 3.1)
+
+[node name="StartVillage" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ground")
+
+[node name="GroundBody" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/GroundBody"]
+shape = SubResource("BoxShape3D_ground")
+
+[node name="Paths" type="Node3D" parent="."]
+
+[node name="MainApproach" type="MeshInstance3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0.2)
+mesh = SubResource("BoxMesh_path_main")
+
+[node name="VillageSquare" type="MeshInstance3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.082, 1.2)
+mesh = SubResource("BoxMesh_square")
+
+[node name="WestLane" type="MeshInstance3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.65, 0.079, 1.15)
+mesh = SubResource("BoxMesh_path_branch")
+
+[node name="EastLane" type="MeshInstance3D" parent="Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65, 0.079, 1.15)
+mesh = SubResource("BoxMesh_path_branch")
+
+[node name="WaterChannel" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -5.9, 0.09, 0)
+mesh = SubResource("BoxMesh_water")
+
+[node name="Bridge" type="Node3D" parent="."]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -5.65, 0.22, 0.9)
+
+[node name="Deck" type="MeshInstance3D" parent="Bridge"]
+mesh = SubResource("BoxMesh_bridge")
+
+[node name="RailNear" type="MeshInstance3D" parent="Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, -0.72)
+mesh = SubResource("BoxMesh_bridge_rail")
+
+[node name="RailFar" type="MeshInstance3D" parent="Bridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24, 0.72)
+mesh = SubResource("BoxMesh_bridge_rail")
+
+[node name="Houses" type="Node3D" parent="."]
+
+[node name="HouseWestA" parent="Houses" instance=ExtResource("1_house")]
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -3.75, 0.08, -3.2)
+
+[node name="HouseWestB" parent="Houses" instance=ExtResource("1_house")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -4.2, 0.08, 2.9)
+
+[node name="HouseEastA" parent="Houses" instance=ExtResource("1_house")]
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 3.65, 0.08, -2.35)
+
+[node name="HouseEastB" parent="Houses" instance=ExtResource("1_house")]
+transform = Transform3D(0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, 0.766044, 4.6, 0.08, 3.55)
+
+[node name="HouseNorth" parent="Houses" instance=ExtResource("1_house")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85, 0.08, -6.2)
+
+[node name="ShrineEdge" type="Node3D" parent="."]
+
+[node name="ToriiGate" parent="ShrineEdge" instance=ExtResource("2_torii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -7.65)
+
+[node name="StoneSteps" parent="ShrineEdge" instance=ExtResource("6_stairs")]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0.09, -6.35)
+
+[node name="RearShrineDoor" parent="ShrineEdge" instance=ExtResource("10_wall_door")]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0.12, -8.95)
+
+[node name="LeftStoneLantern" parent="ShrineEdge" instance=ExtResource("4_stone_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75, 0.08, -6.85)
+
+[node name="RightStoneLantern" parent="ShrineEdge" instance=ExtResource("4_stone_lantern")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.08, -6.85)
+
+[node name="Lanterns" type="Node3D" parent="."]
+
+[node name="LanternWestA" parent="Lanterns" instance=ExtResource("3_lantern")]
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -1.55, 0.08, -3.15)
+
+[node name="LanternEastA" parent="Lanterns" instance=ExtResource("3_lantern")]
+transform = Transform3D(-0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, 1.55, 0.08, -3.15)
+
+[node name="LanternWestB" parent="Lanterns" instance=ExtResource("3_lantern")]
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -2.45, 0.08, 1.95)
+
+[node name="LanternEastB" parent="Lanterns" instance=ExtResource("3_lantern")]
+transform = Transform3D(-0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, -0.819152, 2.45, 0.08, 1.95)
+
+[node name="Fields" type="Node3D" parent="."]
+
+[node name="SouthFieldA" type="MeshInstance3D" parent="Fields"]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -4.1, 0.088, 6.1)
+mesh = SubResource("BoxMesh_field")
+
+[node name="SouthFieldB" type="MeshInstance3D" parent="Fields"]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 4.15, 0.088, 6.35)
+mesh = SubResource("BoxMesh_field")
+
+[node name="KenneyProps" type="Node3D" parent="."]
+
+[node name="FloorPatchWest" parent="KenneyProps" instance=ExtResource("5_floor")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -3.55, 0.09, -1.0)
+
+[node name="FloorPatchEast" parent="KenneyProps" instance=ExtResource("5_floor")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 3.35, 0.09, 0.05)
+
+[node name="CrateStack" parent="KenneyProps" instance=ExtResource("8_crate")]
+transform = Transform3D(1.45, 0, 0, 0, 1.45, 0, 0, 0, 1.45, 2.15, 0.09, 2.55)
+
+[node name="BarrelsNearHouse" parent="KenneyProps" instance=ExtResource("9_barrels")]
+transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, -2.2, 0.09, 3.0)
+
+[node name="WindowWallAsNoticeBoard" parent="KenneyProps" instance=ExtResource("11_wall_window")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 2.75, 0.1, -5.3)
+
+[node name="Shrubs" type="Node3D" parent="."]
+
+[node name="ShrubNW" parent="Shrubs" instance=ExtResource("7_shrub")]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, -6.7, 0.09, -5.65)
+
+[node name="ShrubNE" parent="Shrubs" instance=ExtResource("7_shrub")]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 6.45, 0.09, -4.95)
+
+[node name="ShrubSW" parent="Shrubs" instance=ExtResource("7_shrub")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -6.6, 0.09, 5.55)
+
+[node name="ShrubSE" parent="Shrubs" instance=ExtResource("7_shrub")]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 6.75, 0.09, 5.15)
+
+[node name="ShrubCenterLeft" parent="Shrubs" instance=ExtResource("7_shrub")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.65, 0.09, -0.45)
+
+[node name="ShrubCenterRight" parent="Shrubs" instance=ExtResource("7_shrub")]
+transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 2.92, 0.09, -0.85)
